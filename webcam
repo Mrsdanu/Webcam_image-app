@@ -1,0 +1,17 @@
+import streamlit as st
+from PIL import Image
+with st.expander("start camera"):
+#start the camera here
+    camera_image=st.camera_input("Camera")
+
+# error was coming as app was on capture image
+# while prog jump next step while picture haven't clicked
+if camera_image:
+#create a pillow image instance
+    img = Image.open(camera_image)
+
+#convert the pillow image to grayscale
+    grey_img = img.convert("L")
+
+#displaying rendered image on the webcam
+    st.image(grey_img)
